@@ -94,10 +94,16 @@ signals:
     */
     void suspend( bool );
 
+	/**
+	 * Reset RSIBreak timer to zero on user request
+	*/
+	void timerReset();
+
 private slots:
     void slotConfigure();
     void slotConfigureNotifications();
     void slotToggleSuspend();
+	void slotResetTimer();
     void slotShowStatistics();
     void slotResetStats();
 

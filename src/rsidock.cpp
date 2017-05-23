@@ -82,6 +82,7 @@ RSIDock::RSIDock( QObject *parent )
     doAddAction( menu, i18n( "Switch application &language..." ), m_help, &KHelpMenu::switchApplicationLanguage );
 
     menu->addSeparator();
+	doAddAction(menu, SmallIcon( "media-eject" ), i18n( "Reset &Timer" ), this, &RSIDock::slotResetTimer );
     m_suspendItem = doAddAction(menu, SmallIcon( "media-playback-pause" ), i18n( "&Suspend RSIBreak" ), this, &RSIDock::slotToggleSuspend );
     doAddAction(menu, SmallIcon( "view-statistics" ), i18n( "&Usage Statistics" ), this, &RSIDock::slotShowStatistics );
     doAddAction(menu, SmallIcon( "preferences-desktop-notification" ), i18n( "Configure &Notifications..." ), this, &RSIDock::slotConfigureNotifications );
@@ -127,6 +128,11 @@ void RSIDock::slotConfigure()
 
     if ( !m_suspended )
         emit dialogLeft();
+}
+
+void RSIDock::slotResetTimer()
+{
+	emit timerReset();
 }
 
 void RSIDock::slotToggleSuspend()

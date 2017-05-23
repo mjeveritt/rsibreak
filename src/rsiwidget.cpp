@@ -211,6 +211,7 @@ void RSIObject::startTimer( bool idle )
     connect(m_tray, &RSIDock::dialogEntered, m_timer, &RSITimer::slotStop);
     connect(m_tray, &RSIDock::dialogLeft, m_timer, &RSITimer::slotStart);
     connect(m_tray, &RSIDock::suspend, m_timer, &RSITimer::slotSuspended);
+	connect(m_tray, &RSIDock::timerReset, m_timer, &RSITimer::slotRestart);
 
     connect(m_relaxpopup, &RSIRelaxPopup::skip, m_timer, &RSITimer::skipBreak);
     connect(m_relaxpopup, &RSIRelaxPopup::postpone, m_timer, &RSITimer::postponeBreak);
